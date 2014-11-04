@@ -19,7 +19,7 @@
   insertionText = function(_t) {
     var t;
     t = new Date(_t * 1000);
-    return '<li class="notification single_notification alt"><div class="notification_inner clearfix"><div class="notification_sentence"><div class="hide_overflow">ここから読んでた: ' + ("" + (t.getFullYear()) + "/" + (t.getMonth()) + "/" + (t.getDay()) + " " + (t.getHours()) + ":" + (t.getMinutes()) + ":" + (t.getSeconds())) + '</div></div></div></li>';
+    return '<li class="notification single_notification alt"><div class="notification_inner clearfix"><div class="notification_sentence"><div class="hide_overflow">↓ここから読んでた: ' + ("" + (t.getFullYear()) + "/" + (t.getMonth()) + "/" + (t.getDay()) + " " + (t.getHours()) + ":" + (t.getMinutes()) + ":" + (t.getSeconds())) + '</div></div></div></li>';
   };
 
   beginmarks = JSON.parse(localStorage.getItem("TumblrBeginmarks-beginmarks"));
@@ -58,7 +58,7 @@
               b = beginmarks[_k];
               if ($(this).attr("data-post-id") === b["post_id"]) {
                 console.log("TumblrBeginmarks: found beginmark: " + b['post_id']);
-                _results.push($(this).before(insertionText(b["created_at"])));
+                _results.push($(this).parent("li").before(insertionText(b["created_at"])));
               } else {
                 _results.push(void 0);
               }
